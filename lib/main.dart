@@ -14,7 +14,7 @@ void main() {
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: RowWidget(),
+        body: FormWidget(),
       ),
     ),
     theme: ThemeData(
@@ -311,6 +311,194 @@ class RowWidget extends StatelessWidget {
                 'Row',
                 style: TextStyle(fontSize: 20),
               ))
+        ],
+      ),
+    );
+  }
+}
+
+class ColumeWidget extends StatelessWidget {
+  void onPressed() {
+    print('column');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // height: 500,
+      color: Colors.orange,
+      padding: const EdgeInsets.all(50),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.pink, foregroundColor: Colors.white),
+              child: const Text(
+                'column',
+                style: TextStyle(fontSize: 20),
+              )),
+          ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.pink,
+                foregroundColor: Colors.white,
+                minimumSize: const Size(300, 100),
+              ),
+              child: const Text(
+                'column',
+                style: TextStyle(fontSize: 20),
+              )),
+          ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.pink, foregroundColor: Colors.white),
+              child: const Text(
+                'column',
+                style: TextStyle(fontSize: 20),
+              ))
+        ],
+      ),
+    );
+  }
+}
+
+class ExpandedWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.green,
+                height: 150,
+              )),
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+                height: 150,
+              )),
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.orange,
+                height: 150,
+              ))
+        ],
+      ),
+    );
+  }
+}
+
+// var array = [{"username": "Nguyễn Văn A"}, {"email": 'abc@mail.com'}, {"address": "Hanoi"}];
+class FormWidget extends StatelessWidget {
+  void onCancelPressed() {
+    print('onCancelPressed');
+  }
+
+  void onSubmitPressed() {
+    print('onSubmitPressed');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Row(
+            children: [
+              SizedBox(
+                  width: 150,
+                  child: Text(
+                    'username:',
+                    style: TextStyle(fontSize: 24, color: Colors.grey),
+                  )),
+              SizedBox(
+                  width: 800,
+                  child: Text(
+                    'Nguyễn Văn A',
+                    style: TextStyle(fontSize: 24, color: Colors.black),
+                  ))
+            ],
+          ),
+          const Row(
+            children: [
+              SizedBox(
+                  width: 150,
+                  child: Text(
+                    'email:',
+                    style: TextStyle(fontSize: 24, color: Colors.grey),
+                  )),
+              SizedBox(
+                  width: 800,
+                  child: Text(
+                    'abc@mail.com',
+                    style: TextStyle(fontSize: 24, color: Colors.black),
+                  ))
+            ],
+          ),
+          const Row(
+            children: [
+              SizedBox(
+                  width: 150,
+                  child: Text(
+                    'address:',
+                    style: TextStyle(fontSize: 24, color: Colors.grey),
+                  )),
+              SizedBox(
+                  width: 800,
+                  child: Text(
+                    'Hanoi',
+                    style: TextStyle(fontSize: 24, color: Colors.black),
+                  ))
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: ElevatedButton(
+                      onPressed: onCancelPressed,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      ))),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  flex: 1,
+                  child: ElevatedButton(
+                      onPressed: onSubmitPressed,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      )))
+            ],
+          )
         ],
       ),
     );
