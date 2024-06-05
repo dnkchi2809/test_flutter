@@ -14,7 +14,7 @@ void main() {
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: FormWidget(),
+        body: StackWidget(),
       ),
     ),
     theme: ThemeData(
@@ -499,6 +499,45 @@ class FormWidget extends StatelessWidget {
                       )))
             ],
           )
+        ],
+      ),
+    );
+  }
+}
+
+class StackWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.grey,
+      // width: 500,
+      // height: 500,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        fit: StackFit.loose,
+        children: [
+          Container(
+            color: Colors.blue,
+            height: 300,
+            width: 300,
+          ),
+          Positioned(
+            top: 0,
+            child: Container(
+              color: Colors.green,
+              height: 200,
+              width: 200,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              color: Colors.pink,
+              height: 100,
+              width: 100,
+            ),
+          ),
         ],
       ),
     );
