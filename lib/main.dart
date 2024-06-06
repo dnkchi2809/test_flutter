@@ -12,7 +12,7 @@ void main() {
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: TestInput(),
+        body: TestInputWidget(),
       ),
     ),
     theme: ThemeData(
@@ -22,55 +22,50 @@ void main() {
   ));
 }
 
-class TestInput extends StatefulWidget {
-  const TestInput({super.key});
+class TestInputWidget extends StatefulWidget {
+  const TestInputWidget({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return TestInputState();
+    return _TestInputWidgetState();
   }
 }
 
-class TestInputState extends State<TestInput> {
-  late FocusNode MyFocusNode;
-  final ValueNotifier<bool> MyFocusNotifier = ValueNotifier<bool>(false);
+class _TestInputWidgetState extends State<TestInputWidget> {
+  bool focus = false;
 
   @override
   void initState() {
     super.initState();
-
-    MyFocusNode = FocusNode();
-    MyFocusNode.addListener(_onFocusChange);
   }
 
-  @override
-  void dispose() {
-    MyFocusNode.removeListener(_onFocusChange);
-    MyFocusNode.dispose();
-    MyFocusNotifier.dispose();
-
-    super.dispose();
+  void onTap() {
+    setState(() {
+      focus = true;
+    });
   }
 
-  void _onFocusChange() {
-    MyFocusNotifier.value = MyFocusNode.hasFocus;
+  void onTapOutside(e) {
+    setState(() {
+      focus = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: MyFocusNotifier,
-      builder: (_, isFocus, child) {
-        return TextField(
-          focusNode: MyFocusNode,
-          decoration: const InputDecoration(
-            hintText: "hintText",
-            filled: true,
-            fillColor: isFocus ? Colors.pink : Colors.green,
-          ),
-          onChanged: (value) => print(value),
-        );
-      },
+    return TextField(
+      decoration: InputDecoration(
+        label: focus ? Text("Label") : null,
+        hintText: "hintText",
+        filled: true,
+        fillColor: focus ? Colors.pink : Colors.green,
+        helperText: 'helperText',
+      ),
+      onChanged: (value) => print(value),
+      keyboardType: TextInputType.number,
+      maxLength: 10,
+      onTap: onTap,
+      onTapOutside: onTapOutside,
     );
   }
 }
