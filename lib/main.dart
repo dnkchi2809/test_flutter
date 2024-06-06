@@ -598,14 +598,14 @@ class ImageAndCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // const Image(
-        //   image: NetworkImage(
-        //       'https://img-cdn.xemgame.com/2022/10/15/Anya-Forger-trong-Spy-X-Family-1.jpg'),
-        //   fit: BoxFit.cover,
-        //   height: double.infinity,
-        //   width: double.infinity,
-        //   // alignment: Alignment.center,
-        // ),
+        const Image(
+          image: NetworkImage(
+              'https://img-cdn.xemgame.com/2022/10/15/Anya-Forger-trong-Spy-X-Family-1.jpg'),
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+          // alignment: Alignment.center,
+        ),
         // Align(
         //   alignment: Alignment.bottomCenter,
         //   child: Container(
@@ -654,14 +654,6 @@ class ImageAndCardWidget extends StatelessWidget {
         //     ),
         //   ),
         // ),
-        const Image(
-          image: NetworkImage(
-              'https://img-cdn.xemgame.com/2022/10/15/Anya-Forger-trong-Spy-X-Family-1.jpg'),
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
-          // alignment: Alignment.center,
-        ),
         Positioned(
           bottom: 20,
           left: 10,
@@ -687,26 +679,6 @@ class ImageAndCardWidget extends StatelessWidget {
                       "remaining essentially unchanged. It was popularised in the 1960s with the release of "
                       "Letraset sheets containing Lorem Ipsum passages, and more recently with "
                       "desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
-                  // Flexible(
-                  //   flex: 2,
-                  //   fit: FlexFit.loose,
-                  //   child: Text(
-                  //     "Anya",
-                  //     style: TextStyle(fontSize: 40),
-                  //   ),
-                  // ),
-                  // Flexible(
-                  //   flex: 5,
-                  //   fit: FlexFit.loose,
-                  //   child: Text(
-                  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-                  //       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
-                  //       "when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-                  //       "It has survived not only five centuries, but also the leap into electronic typesetting, "
-                  //       "remaining essentially unchanged. It was popularised in the 1960s with the release of "
-                  //       "Letraset sheets containing Lorem Ipsum passages, and more recently with "
-                  //       "desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
-                  // ),
                 ],
               ),
             ),
