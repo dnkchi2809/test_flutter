@@ -1,25 +1,21 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: SafeArea(
+    home: const SafeArea(
       child: Scaffold(
         // appBar: AppBar(
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: StackWidget(),
+        body: ImageAndCardWidget(),
       ),
     ),
     theme: ThemeData(
-      fontFamily: 'Grafina',
-    ),
+        // fontFamily: 'Belagia',
+        ),
     debugShowCheckedModeBanner: false,
   ));
 }
@@ -101,6 +97,8 @@ class MyWidget2State extends State<MyWidget2> {
 }
 
 class TextButtonWidget extends StatefulWidget {
+  const TextButtonWidget({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return TextButtonWidgetState();
@@ -153,6 +151,8 @@ class TextButtonWidgetState extends State<TextButtonWidget> {
 }
 
 class ElevatedButtonWidget extends StatelessWidget {
+  const ElevatedButtonWidget({super.key});
+
   void onPressed() {
     print('ElevatedButtonWidget');
   }
@@ -186,6 +186,8 @@ class ElevatedButtonWidget extends StatelessWidget {
 }
 
 class OutlinedButtonWidget extends StatelessWidget {
+  const OutlinedButtonWidget({super.key});
+
   void onPressed() {
     print('OutlinedButtonWidget');
   }
@@ -212,6 +214,8 @@ class OutlinedButtonWidget extends StatelessWidget {
 }
 
 class ContainerWidget extends StatelessWidget {
+  const ContainerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -238,6 +242,8 @@ class ContainerWidget extends StatelessWidget {
 }
 
 class SizeBoxWidget extends StatelessWidget {
+  const SizeBoxWidget({super.key});
+
   void onPressed() {
     print('SizeBoxWidget');
   }
@@ -269,6 +275,8 @@ class SizeBoxWidget extends StatelessWidget {
 }
 
 class RowWidget extends StatelessWidget {
+  const RowWidget({super.key});
+
   void onPressed() {
     print('row');
   }
@@ -318,6 +326,8 @@ class RowWidget extends StatelessWidget {
 }
 
 class ColumeWidget extends StatelessWidget {
+  const ColumeWidget({super.key});
+
   void onPressed() {
     print('column');
   }
@@ -367,6 +377,8 @@ class ColumeWidget extends StatelessWidget {
 }
 
 class ExpandedWidget extends StatelessWidget {
+  const ExpandedWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -404,6 +416,8 @@ class ExpandedWidget extends StatelessWidget {
 
 // var array = [{"username": "Nguyễn Văn A"}, {"email": 'abc@mail.com'}, {"address": "Hanoi"}];
 class FormWidget extends StatelessWidget {
+  const FormWidget({super.key});
+
   void onCancelPressed() {
     print('onCancelPressed');
   }
@@ -506,6 +520,8 @@ class FormWidget extends StatelessWidget {
 }
 
 class StackWidget extends StatelessWidget {
+  const StackWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -540,6 +556,105 @@ class StackWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class FlexibleWidget extends StatelessWidget {
+  const FlexibleWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Flexible(
+            flex: 1,
+            fit: FlexFit.loose,
+            child: Container(
+              height: 100,
+              color: Colors.red,
+            )),
+        Flexible(
+            flex: 2,
+            fit: FlexFit.tight,
+            child: Container(
+              color: Colors.orange,
+            )),
+        Flexible(
+            flex: 1,
+            fit: FlexFit.tight,
+            child: Container(
+              color: Colors.green,
+            ))
+      ],
+    );
+  }
+}
+
+class ImageAndCardWidget extends StatelessWidget {
+  const ImageAndCardWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        const Image(
+          image: NetworkImage(
+              'https://img-cdn.xemgame.com/2022/10/15/Anya-Forger-trong-Spy-X-Family-1.jpg'),
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+          // alignment: Alignment.center,
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            width: 500,
+            height: 300,
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(bottom: 50),
+            // color: Colors.white,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              // border: Border.all(
+              //     color: Colors.pink, // Set border color
+              //     width: 3.0), // Set border width
+              borderRadius: const BorderRadius.all(
+                  Radius.circular(10.0)), // Set rounded corner radius
+              // boxShadow: const [
+              //   BoxShadow(
+              //       blurRadius: 10, color: Colors.black, offset: Offset(1, 3))
+              // ]
+            ),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 2,
+                  fit: FlexFit.loose,
+                  child: Text(
+                    "Anya",
+                    style: TextStyle(fontSize: 40),
+                  ),
+                ),
+                Flexible(
+                  flex: 5,
+                  fit: FlexFit.loose,
+                  child: Text(
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
+                      "when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+                      "It has survived not only five centuries, but also the leap into electronic typesetting, "
+                      "remaining essentially unchanged. It was popularised in the 1960s with the release of "
+                      "Letraset sheets containing Lorem Ipsum passages, and more recently with "
+                      "desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
 }
