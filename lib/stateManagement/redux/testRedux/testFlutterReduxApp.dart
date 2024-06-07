@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:test_flutter/stateManagement/redux/reducer.dart';
+import 'package:test_flutter/stateManagement/redux/testRedux/reducer.dart';
 
 import 'actions.dart';
 
@@ -18,7 +18,6 @@ class TestFlutterReduxApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(store.reducer);
     return StoreProvider(
         store: store,
         child: Padding(
