@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'navigator/returnDataFromScreen/homeScreen.dart';
+import 'navigator/drawer/drawer.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,7 +12,7 @@ void main() {
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: HomeScreen(),
+        body: MyHomePage(title: 'Drawer Demo'),
       ),
     ),
     theme: ThemeData(
