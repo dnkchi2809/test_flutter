@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'focus.dart';
+import 'navigator/returnDataFromScreen/homeScreen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,10 +12,7 @@ void main() {
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[MyCustomWidget(), MyCustomWidget()],
-        ),
+        body: HomeScreen(),
       ),
     ),
     theme: ThemeData(
