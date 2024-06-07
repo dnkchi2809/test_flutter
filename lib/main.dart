@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import 'navigator/drawer/drawer.dart';
+import 'package:test_flutter/stateManagement/redux/testFlutterReduxApp.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: const SafeArea(
+    home: SafeArea(
       child: Scaffold(
         // appBar: AppBar(
         //   backgroundColor: Colors.red,
         //   title: const Text('Home'),
         // ),
-        body: MyHomePage(title: 'Drawer Demo'),
+        body: TestFlutterReduxApp(),
       ),
     ),
     theme: ThemeData(
