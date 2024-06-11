@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_flutter/stateManagement/redux/testRedux/reducer.dart';
 
+import '../../../values/share_keys.dart';
 import 'actions.dart';
 
 class TestFlutterReduxApp extends StatelessWidget {
@@ -12,8 +14,14 @@ class TestFlutterReduxApp extends StatelessWidget {
 
   TestFlutterReduxApp({super.key});
 
-  void onPressed(String color) {
+  Future<void> onPressed(String color) async {
     store.dispatch(ChangeColorAction(color));
+
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? prevColor = preferences.getString(ShareKeys.changedColorKey);
+    print(prevColor);
+
+    await preferences.setString(ShareKeys.changedColorKey, color);
   }
 
   @override
