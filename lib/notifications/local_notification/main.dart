@@ -16,6 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  int _notificationIdCounter = 0;
 
   @override
   void initState() {
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
       macOS: darwinPlatformChannelSpecifics,
     );
     await flutterLocalNotificationsPlugin.show(
-      0,
+      _notificationIdCounter++,
       'Default Notification',
       'Đây là thông báo với default sound và default icon',
       platformChannelSpecifics,
@@ -68,7 +69,7 @@ class _MyAppState extends State<MyApp> {
       macOS: darwinPlatformChannelSpecifics,
     );
     await flutterLocalNotificationsPlugin.show(
-      0,
+      _notificationIdCounter++,
       'Notification',
       'Đây là thông báo không có sound và default icon',
       platformChannelSpecifics,
