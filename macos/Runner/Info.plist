@@ -28,5 +28,11 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSLocalNotificationAlertSound</key>
+    <string>YES</string>
+    <key>NSLocalNotificationAlertBody</key>
+    <string>YES</string>
+    <key>NSLocalNotificationAlertTitle</key>
+    <string>YES</string>
 </dict>
 </plist>

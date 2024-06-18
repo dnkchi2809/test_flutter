@@ -1,141 +1,29 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'notification_controller.dart';
-import 'notification_page.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  // The navigator key is necessary to navigate using static methods
-  static final GlobalKey<NavigatorState> navigatorKey =
-      GlobalKey<NavigatorState>();
-
-  static Color mainColor = const Color(0xFF9D50DD);
-
-  @override
-  State<MyApp> createState() => _AppState();
-}
-
-class _AppState extends State<MyApp> {
-  static const String routeHome = '/', routeNotification = '/notification-page';
-
-  @override
-  void initState() {
-    NotificationController.startListeningNotificationEvents();
-    super.initState();
-  }
-
-  List<Route<dynamic>> onGenerateInitialRoutes(String initialRouteName) {
-    List<Route<dynamic>> pageStack = [];
-    pageStack.add(MaterialPageRoute(
-        builder: (_) =>
-            const MyHomePage(title: 'Awesome Notifications Example App')));
-    if (initialRouteName == routeNotification &&
-        NotificationController.initialAction != null) {
-      pageStack.add(MaterialPageRoute(
-          builder: (_) => NotificationPage(
-              receivedAction: NotificationController.initialAction!)));
-    }
-    return pageStack;
-  }
-
-  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case routeHome:
-        return MaterialPageRoute(
-            builder: (_) =>
-                const MyHomePage(title: 'Awesome Notifications Example App 1'));
-
-      case routeNotification:
-        ReceivedAction receivedAction = settings.arguments as ReceivedAction;
-        return MaterialPageRoute(
-            builder: (_) => NotificationPage(receivedAction: receivedAction));
-    }
-    return null;
-  }
+class MyApp extends StatelessWidget {
+  late int _notificationId = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Awesome Notifications - Simple Example',
-      navigatorKey: MyApp.navigatorKey,
-      onGenerateInitialRoutes: onGenerateInitialRoutes,
-      onGenerateRoute: onGenerateRoute,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-    );
-  }
-}
-
-///  *********************************************
-///     HOME PAGE
-///  *********************************************
-///
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Push the buttons below to create new notifications',
-            ),
-          ],
+      home: Scaffold(
+        body: Center(
+          child: FloatingActionButton(
+            onPressed: () {
+              NotificationController.showNotification(NotificationContent(
+                id: _notificationId++,
+                channelKey: 'basic_channel',
+                title: 'Notification title',
+                body: 'This is the body of the notification',
+              ));
+            },
+            tooltip: 'Show notification',
+            child: const Icon(Icons.notifications),
+          ),
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(width: 20),
-            FloatingActionButton(
-              heroTag: '1',
-              onPressed: () => NotificationController.createNewNotification(),
-              tooltip: 'Create New notification',
-              child: const Icon(Icons.outgoing_mail),
-            ),
-            const SizedBox(width: 10),
-            FloatingActionButton(
-              heroTag: '2',
-              onPressed: () => NotificationController.scheduleNewNotification(),
-              tooltip: 'Schedule New notification',
-              child: const Icon(Icons.access_time_outlined),
-            ),
-            const SizedBox(width: 10),
-            FloatingActionButton(
-              heroTag: '3',
-              onPressed: () => NotificationController.resetBadgeCounter(),
-              tooltip: 'Reset badge counter',
-              child: const Icon(Icons.exposure_zero),
-            ),
-            const SizedBox(width: 10),
-            FloatingActionButton(
-              heroTag: '4',
-              onPressed: () => NotificationController.cancelNotifications(),
-              tooltip: 'Cancel all notifications',
-              child: const Icon(Icons.delete_forever),
-            ),
-          ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
