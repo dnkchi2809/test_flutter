@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
 import 'package:flutter/material.dart';
-import 'package:test_flutter/splash_screen.dart';
+import 'package:test_flutter/splash/splash_screen.dart';
 
 void main() {
   runApp(

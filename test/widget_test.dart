@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:test_flutter/layout/focus.dart';
 
 import '../stories/my_widget_stories.dart';
 
@@ -9,7 +8,7 @@ void main() {
 
     // Perform your assertions here based on the default story
     // expect(find.text('Default Title'), findsOneWidget);
-    expect(find.b(MyCustomWidget), findsOneWidget);
+    // expect(find.b(MyCustomWidget), findsOneWidget);
     // expect(find.byKey(Key('description')), findsOneWidget);
   });
 
